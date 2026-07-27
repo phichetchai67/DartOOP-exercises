@@ -17,12 +17,23 @@ class UserProfile {
   }
   // TODO 1: สร้าง Getter สำหรับ age
   // คำใบ้: ต้องคืนค่าเป็น int และใช้คีย์เวิร์ด 'get'
-  
+  int get age{
+    return _age;
+  }
   // TODO 2: สร้าง Setter สำหรับ age
   // - ถ้าอายุน้อยกว่า 13 ให้ print "❌ ข้อผิดพลาด: ต้องอายุ 13 ปีขึ้นไปจึงจะใช้งานแอปได้"
   // - ถ้าอายุมากกว่า 120 ให้ print "❌ ข้อผิดพลาด: อายุไม่ถูกต้อง"
   // - นอกเหนือจากนั้น ให้อัปเดตค่า _age และ print "✅ บันทึกอายุแล้ว"
-  
+  set age(int newAge){
+    if (newAge < 13){
+      print("❌ ข้อผิดพลาด: ต้องอายุ 13 ปีขึ้นไปจึงจะใช้งานแอปได้");
+    }else if (newAge > 120){
+      print("❌ ข้อผิดพลาด: อายุไม่ถูกต้อง");
+    }else {
+      _age = newAge;
+      print("✅ บันทึกอายุแล้ว");
+    }
+  }
 }
 void main() {
   var myProfile = UserProfile("nu_student_26");
@@ -34,10 +45,9 @@ void main() {
   print("\n=== ทดสอบ ENCAPSULATION ของอายุ ===\n");
   
   // TODO 3: ลองกำหนดอายุเป็น 10 (ควรแสดงข้อผิดพลาดทางหน้าจอ)
-  
-  
+  myProfile.age = 10;
   // TODO 4: ลองกำหนดอายุเป็น 20 (ควรสำเร็จ)
-  
-  
+  myProfile.age = 20;
   // TODO 5: พิมพ์อายุออกทางคอนโซลโดยใช้ Getter ที่คุณสร้างขึ้นใน TODO 1
+  print("อายุ : ${myProfile.age}");
 }
